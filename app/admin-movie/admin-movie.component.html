@@ -1,0 +1,77 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="container">
+    <div class="movieCardCont my-5">
+      <h1>Movie List</h1>
+      <div class="content" role="main">
+        <div class="card">
+          <div class="form-group">
+            <label for="search-text"><b>Search Bar</b> </label><br><br>
+            
+            <!-- Angular Material Input Tags -->
+
+            <!-- Search Movie Filter -->
+              <mat-form-field class="example-form-field">
+                
+                <mat-label><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="search"></mat-icon>Search</mat-label>
+                <input matInput type="text"  [(ngModel)]="searchTerm" (keyup)="search($event)">
+                <ul *ngIf="searchTerm && searchTerm.length" >
+                <mat-option *ngFor="let movie of searchMovieName | movieNameFilter: searchTerm "  >
+                  {{movie}}
+                </mat-option>
+                </ul>
+                
+              </mat-form-field>
+       
+          </div>
+         
+          <!-- Genre Filter Chips -->
+          <mat-chip-listbox [(ngModel)]="searchGenre" (click)="searchgenre($event)"> 
+            <mat-chip-option color="warn" selected>Action</mat-chip-option>
+      
+          
+              <mat-chip-option color="warn" >Comedy</mat-chip-option>
+           
+           
+              <mat-chip-option color="warn" >Thriller</mat-chip-option>
+              </mat-chip-listbox>
+            
+            <mat-chip-listbox [(ngModel)]="searchGenre" (click)="searchgenre($event)">
+              <mat-chip-option color="warn" >Drama</mat-chip-option>
+          
+           
+              <mat-chip-option color="warn" >Animation</mat-chip-option>
+          
+        
+          
+
+
+          </mat-chip-listbox>
+         
+        
+          
+      <div class="row">
+        <div class="col-12 col-md-4 my-3" *ngFor="let i of movies | filter: searchKey: 'name' | filter: searchPair : 'genre'">
+          <div class="movieCard p-3">
+            <div class="row">
+              <div class="imgCont col-6">
+                <img style="height: 100px; width: 150px;" src={{i.thumbnail}} class="img-fluid" alt="" />
+              </div>
+              <div class="content flex-v col-6">
+                <div class="flex-v">
+                  <span class="movieName">{{ i.name }}</span>
+                  <span class="movieGenre">{{ i.genre }}</span>
+                </div>
+                <div class="footer flex-h">
+                  <span>{{ i.duration }}</span>
+                  <a (click)="updateList(i.name)"
+                    ><i class="fa-solid fa-trash"></i
+                  ></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

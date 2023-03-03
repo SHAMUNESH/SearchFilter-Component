@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700&display=swap");
+
+.imgCont {
+  width: var(--movieWidth);
+  height: var(--movieHeight);
+}
+
+.movieCard {
+  background: var(--cardBg); /* neutral-200 */
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  font-family: var(--movieCardFont);
+}
+.movieName {
+  font-size: 20px;
+  line-height: 30px;
+  color: var(--black);
+}
+.movieGenre {
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--grey);
+}
+.footer span {
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--grey);
+}
+.footer {
+  justify-content: space-between;
+}
+
+.example-form-field {
+    width: 300px;
+   
+    
+  }
